@@ -85,6 +85,6 @@ if "login" in driver.current_url:
 else:
     print("HATA: Login sayfasına donmedi")
 
-time.sleep(2)
+time.sleep(1)
 
 driver.quit() #seleniumun kullandığı tüm pencereleri kapatır.
