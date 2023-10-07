@@ -48,20 +48,15 @@ time.sleep(1)
 # yanliş kullanıcı şifresi => Your password is invalid!
 mesaj = login("tomsmith","hatali")
 
-if "Your password is invalid!" in mesaj:
-    print("Yanlış kullanıcı şifre testi doğru çalıştı.")
-else:
-    print("HATA: yanlış kullanıcı şifre testi çalışmyor.")
+# ister if-else ile ister assert kullanarak doğrulama yapabiliriz.
+assert "Your password is invalid!" in mesaj # assert ile doğrulama yapabiliriz eğer hatalıysa hata mesajı verir. doğruysa mesaj vermez.
 
 time.sleep(1)
 
 # ikisi de doğruysa => mesaj ;You logged into a secure area! , link secure içerecek , başlık Secure Area olmalıdır.
 mesaj = login("tomsmith","SuperSecretPassword!")
 
-if "You logged into a secure area!" in mesaj:
-    print("OK, doğru kullanıcı adı ve şifre testi çalıştı.")
-else:
-    print("HATA: Doğru kullanıcı adı ve şifre testi çalışmıyor")
+assert "You logged into a secure area!" in mesaj
 
 link = driver.current_url
 if "secure" in link:
@@ -71,10 +66,7 @@ else:
 
 title_area = driver.find_element(By.CSS_SELECTOR, "h2").text
 
-if "Secure Area" in title_area:
-    print("OK, Sayfa başlığı doğru")
-else:
-    print("HATA: sayfa başlığı yanliş")
+assert "Secure Area" in title_area
 
 # logout düğmesine tıkla
 driver.find_element(By.CSS_SELECTOR,"a[class='button secondary radius']").click()
